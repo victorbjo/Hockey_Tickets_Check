@@ -17,7 +17,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt --no-cache-dir
 
 #COPY migrations/*.sql migrations/
-COPY src /app
+COPY . .
 
 ENV EMAIL=''
 ENV PASSWORD=''
