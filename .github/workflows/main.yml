@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - "master"
+      - "main"
 env:
   CONTAINER_REGISTRY: ghcr.io
   IMAGE_NAME: Hockey_Tickets_Check
