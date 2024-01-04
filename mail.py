@@ -7,6 +7,7 @@ SERVER = os.environ.get("SMTP_SERVER")
 PORT = 587
 username = os.environ.get("EMAIL")
 password = os.environ.get("PASSWORD")
+print("Loaded")
 def send_email(body, subject, receiver = 'test@gmail.com'):
     # Create the container email message.
     msg = MIMEMultipart()
