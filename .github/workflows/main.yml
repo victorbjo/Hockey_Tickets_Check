@@ -6,7 +6,7 @@ on:
       - "main"
 env:
   CONTAINER_REGISTRY: ghcr.io
-  IMAGE_NAME: hockey_tickets_check
+  IMAGE_NAME: hockey-tickets-check
   
 jobs:
   build:
