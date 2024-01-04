@@ -73,6 +73,6 @@ async def main():
         matches = get_matches()
         if matches:
             body = "New matches available! \n\n" + matches
-            mail.send_email(body, "New matches")
+            mail.send_email(body, "New matches", "victor.bjoerholm@gmail.com")
         await asyncio.sleep(DELAY)
 asyncio.run(main())
