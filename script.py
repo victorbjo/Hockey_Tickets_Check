@@ -57,6 +57,7 @@ async def main():
         exit(1)
     once_per_day = False
     day = 100
+    mail.send_email("Script started", "Script started", receivers)
     while True:        
         now = datetime.now()
         if day != now.strftime("%d"):
