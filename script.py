@@ -47,7 +47,9 @@ def get_matches(require_new = True):
     elif not require_new:
         return all_matches
     return False
-
+def send_mail_multiple_receivers(body, subject, receivers):
+    for receiver in receivers:
+        mail.send_email(body, subject, receiver)
 async def main():
     email = os.environ.get("EMAIL")
     email_password = os.environ.get("PASSWORD")
@@ -57,7 +59,7 @@ async def main():
         exit(1)
     once_per_day = False
     day = 100
-    mail.send_email("Script started", "Script started", receivers)
+    send_mail_multiple_receivers("Script started", "Script started", receivers)
     print("Script started")
     while True:        
         now = datetime.now()
@@ -70,11 +72,11 @@ async def main():
             matches = get_matches(False)
             if matches:
                 body = "This is just your daily update/heartbeat, if you want to unsubscribe, tough luck! \n\n" + matches
-                mail.send_email(body, "Daily update", receivers)
+                send_mail_multiple_receivers(body, "Daily update", receivers)
             once_per_day = True
         matches = get_matches()
         if matches:
             body = "New matches available! \n\n" + matches
-            mail.send_email(body, "New matches", receivers)
+            send_mail_multiple_receivers(body, "New matches", receivers)
         await asyncio.sleep(DELAY)
 asyncio.run(main())
