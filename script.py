@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 # URL of the website
 URL = 'https://shop.aalborgpirates.dk/kampe'
-DELAY = 30 #60 seconds/min * 15 minutes = 900 seconds
+DELAY = 900 #60 seconds/min * 15 minutes = 900 seconds
 def get_html(URL = URL):
     response = requests.get(URL)
 
@@ -58,6 +58,7 @@ async def main():
     once_per_day = False
     day = 100
     mail.send_email("Script started", "Script started", receivers)
+    print("Script started")
     while True:        
         now = datetime.now()
         if day != now.strftime("%d"):
@@ -74,6 +75,6 @@ async def main():
         matches = get_matches()
         if matches:
             body = "New matches available! \n\n" + matches
-            mail.send_email(body, "New matches", "victor.bjoerholm@gmail.com")
+            mail.send_email(body, "New matches", receivers)
         await asyncio.sleep(DELAY)
 asyncio.run(main())
