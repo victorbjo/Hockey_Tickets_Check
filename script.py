@@ -60,7 +60,7 @@ async def main():
         exit(1)
     once_per_day = False
     day = 100
-    mail.send_email("Script started", "Script started", receivers)
+    mail.send_email("Script started :D", "Script started", receivers)
     print("Script started")
     while True:        
         now = datetime.now()
@@ -72,7 +72,7 @@ async def main():
             print("Sending daily update")
             matches = get_matches(False)
             if matches:
-                body = "This is just your daily update/heartbeat, if you want to unsubscribe, tough luck! \n\n" + matches
+                body = "This is just your daily update/heartbeat, if you want to unsubscribe, tough luck!!! \n\n" + matches
                 mail.send_email(body, "Daily update", receivers)
             once_per_day = True
         matches = get_matches()
