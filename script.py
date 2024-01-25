@@ -36,12 +36,13 @@ def get_matches(require_new = True):
 
         game = f"{game}  {details}"
         all_matches += f"{game} {link} \n\n"
+        if "23" in game.lower() and "februar" in game.lower():
+            new_matches += f"{game} {link} \n\n"
         if game in matches:
             continue
         new_matches += f"{game} {link} \n\n"
         matches_file.write(f"{game}\n")
     matches_file.close()
-
     if new_matches != "":
         return new_matches
     elif not require_new:
